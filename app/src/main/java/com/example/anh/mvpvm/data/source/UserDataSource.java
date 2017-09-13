@@ -1,6 +1,7 @@
 package com.example.anh.mvpvm.data.source;
 
 import com.example.anh.mvpvm.data.model.User;
+import io.reactivex.Observable;
 import java.util.List;
 
 /**
@@ -8,9 +9,5 @@ import java.util.List;
  */
 
 public interface UserDataSource {
-    interface Callback<T>{
-        void onSuccess(T data);
-        void onFailure(String msg);
-    }
-    void getUsers(String username, Callback<List<User>> callback);
+    Observable<List<User>> getUsers(String username);
 }

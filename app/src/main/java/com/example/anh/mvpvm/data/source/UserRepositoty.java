@@ -2,6 +2,7 @@ package com.example.anh.mvpvm.data.source;
 
 import com.example.anh.mvpvm.data.model.User;
 import com.example.anh.mvpvm.data.source.remote.api.UserRemoteDataSource;
+import io.reactivex.Observable;
 import java.util.List;
 
 /**
@@ -16,7 +17,7 @@ public class UserRepositoty implements UserDataSource {
     }
 
     @Override
-    public void getUsers(String username, Callback<List<User>> callback) {
-        mDataSource.getUsers(username,callback);
+    public Observable<List<User>> getUsers(String username) {
+        return mDataSource.getUsers(username);
     }
 }

@@ -3,6 +3,7 @@ package com.example.anh.mvpvm.data.source.remote.api;
 import com.example.anh.mvpvm.data.model.User;
 import com.example.anh.mvpvm.data.source.UserDataSource;
 import com.example.anh.mvpvm.data.source.remote.api.service.UserAPI;
+import io.reactivex.Observable;
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -19,22 +20,7 @@ public class UserRemoteDataSource extends BaseRemoteDataSource implements UserDa
     }
 
     @Override
-    public void getUsers(String username, final Callback<List<User>> callback) {
-        mUserApi.getListUserfollowers(username).enqueue(new retrofit2.Callback<List<User>>() {
-            @Override
-            public void onResponse(Call<List<User>> call, Response<List<User>> response) {
-                if (response.isSuccessful()) {
-                    List<User> users = response.body();
-                    callback.onSuccess(users);
-                } else {
-                    callback.onFailure("code: "+response.code());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<User>> call, Throwable t) {
-                callback.onFailure(t.getMessage());
-            }
-        });
+    public Observable<List<User>> getUsers(String username) {
+        return mUserApi.getListUserfollowers(username);
     }
 }

@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.anh.mvpvmexample.screen.main.ItemMainViewModel"
+            type="com.example.anh.mvpvm.screen.main.ItemMainViewModel"
             ></variable>
     </data>
     <LinearLayout
